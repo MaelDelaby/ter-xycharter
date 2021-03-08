@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/demoBoolean.js"
+    "test": "mocha test/demo2.js"
   },
   "keywords": [],
   "author": "",

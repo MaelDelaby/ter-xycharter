@@ -9,7 +9,7 @@ const WHITE_COLOR = "\x1b[37m";
 var uniqid = require("uniqid");
 const { timeStamp } = require("console");
 
-const rooting = "http://localhost:4000";
+const rooting = "http://localhost:4020";
 
 console.log(
   "**************** Demo client send integer data timeseries *****************"
@@ -20,25 +20,18 @@ var dataClient;
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
+let pointsN = [];
 
-const sendData = () => {
-  dataClient = {
-    name: "dataSetTimeSeries2",
-    id: idDataSet.toString(),
-    timestamp: parseInt(Date.now() / 1000),
-    value: getRandomInt(1000),
-  };
+for (let i = 0; i < 200; i++) {
+  pointsN.push({ x: i, y: getRandomInt(1000) });
+}
 
-  console.log(
-    MAGENTA_COLOR,
-    "Le client envoie des données : ",
-    YELLOW_COLOR,
-    dataClient
-  );
-  axios.post(rooting + "/dataSets/timeseries", dataClient);
+dataClient = {
+  name: "normalData10",
+  points: pointsN,
 };
 
-axios.get(rooting + "/dataSets/timeseries").then((response) => {
+axios.post(rooting + "/dataSets", dataClient).then((response) => {
   console.log(
     MAGENTA_COLOR,
     "Le client récupère la clè du dataset : ",
@@ -46,5 +39,4 @@ axios.get(rooting + "/dataSets/timeseries").then((response) => {
     response.data
   );
   idDataSet = response.data;
-  setInterval(sendData, 1000);
 });

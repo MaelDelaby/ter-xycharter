@@ -58,9 +58,3 @@ services:
 
     ports:
       - "4000:4000"
-  front-end:
-    build: ./front-end
-    container_name: front-end
-    ports:
-      - "4080:4080"
-
