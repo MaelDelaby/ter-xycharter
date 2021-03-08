@@ -8,7 +8,7 @@ parent_path=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 
 cd $parent_path/"Services"
 
-declare -a name_container=("data-writer" "graph-writer" "database-reader" "xycharter-render" "quickchart-render" "render" "rooting" "front-end")
+declare -a name_container=("data-writer" "graph-writer" "database-reader" "xycharter-render" "quickchart-render" "render" "rooting")
 
 for name in "${name_container[@]}"
 do
